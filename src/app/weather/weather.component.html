@@ -1,0 +1,19 @@
+<div class="search-box">
+  <mat-icon class="w-icon">search</mat-icon>
+  <mat-form-field class="example-full-width w-input">
+    <input matInput #city value="Самара">
+  </mat-form-field>
+  <button mat-raised-button color="primary" class="w-button" (click)="onSubmit(city.value)">
+    Search
+  </button>
+</div>
+
+<app-info-box *ngIf="currentWeatherData" [currentWeatherData]="currentWeatherData" [locationData]="locationData"
+              [forecastData]="forecastData">
+</app-info-box>
+
+
+<!--<div class="weather-by-day-box">-->
+
+<!--</div>-->
+

@@ -1,18 +1,39 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatInputModule} from "@angular/material/input";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {WeatherComponent} from './weather/weather.component';
+import {RouterModule} from '@angular/router';
+import {allAppRoutes} from './routes';
+import {HttpClientModule} from "@angular/common/http";
+import {OpenWeatherService} from "../service/open-weather.service";
+import { InfoBoxComponent } from './info-box/info-box.component';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WeatherComponent,
+    InfoBoxComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    CommonModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    RouterModule.forRoot(allAppRoutes),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [OpenWeatherService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

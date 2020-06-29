@@ -1,0 +1,17 @@
+<div class="info-box-primary">
+  <img [src]=weatherIcon> <br>
+  <h1>{{currentWeatherData[0].Temperature.Metric.Value}} ℃</h1>
+  <h1>{{currentWeatherData[0].WeatherText}}</h1>
+  {{locationData.LocalizedName}} <br>
+  {{locationData.Country.LocalizedName}} <br>
+  {{locationData.GeoPosition.Latitude}}, {{locationData.GeoPosition.Longitude}} <br>
+<!--  Ощущается как: {{weatherData.RealFeelTemperature}} ℃ <br>-->
+<!--  Скорость ветра: {{weatherData.wind.speed}} м/с <br>-->
+<!--  Давление: {{weatherData.main.pressure * 0.75}} мм. рт. ст. <br>-->
+<!--  Влажность: {{weatherData.main.humidity}}% <br>-->
+</div>
+
+<div class="info-box-secondary">
+  {{forecastData.DailyForecasts[0].Temperature.Minimum.Value}} - {{forecastData.DailyForecasts[0].Temperature.Maximum.Value}}
+</div>
+
