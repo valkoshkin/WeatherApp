@@ -17,7 +17,7 @@ export class InfoBoxComponent implements OnInit, OnChanges {
 
   public weatherIcon: any;
 
-  constructor(private openWeatherService: OpenWeatherService) {
+  constructor(public openWeatherService: OpenWeatherService) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {

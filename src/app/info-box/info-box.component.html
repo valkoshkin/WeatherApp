@@ -5,13 +5,23 @@
   {{locationData.LocalizedName}} <br>
   {{locationData.Country.LocalizedName}} <br>
   {{locationData.GeoPosition.Latitude}}, {{locationData.GeoPosition.Longitude}} <br>
-<!--  Ощущается как: {{weatherData.RealFeelTemperature}} ℃ <br>-->
-<!--  Скорость ветра: {{weatherData.wind.speed}} м/с <br>-->
-<!--  Давление: {{weatherData.main.pressure * 0.75}} мм. рт. ст. <br>-->
-<!--  Влажность: {{weatherData.main.humidity}}% <br>-->
+  <!--  Ощущается как: {{weatherData.RealFeelTemperature}} ℃ <br>-->
+  <!--  Скорость ветра: {{weatherData.wind.speed}} м/с <br>-->
+  <!--  Давление: {{weatherData.main.pressure * 0.75}} мм. рт. ст. <br>-->
+  <!--  Влажность: {{weatherData.main.humidity}}% <br>-->
 </div>
 
 <div class="info-box-secondary">
-  {{forecastData.DailyForecasts[0].Temperature.Minimum.Value}} - {{forecastData.DailyForecasts[0].Temperature.Maximum.Value}}
+  <div *ngFor="let forecast of forecastData.DailyForecasts" class="inline-box">
+    {{forecast.Date.split('T')[0]}} <br>
+    <img [src]=openWeatherService.makeSafeImageUrl(forecast.Day.Icon)> <br>
+    {{forecast.Day.IconPhrase}} <br>
+    {{forecast.Temperature.Minimum.Value}}℃ - {{forecast.Temperature.Maximum.Value}}℃ <br><br>
+  </div>
 </div>
+
+<div class="weather-by-day-box">
+
+</div>
+
 
