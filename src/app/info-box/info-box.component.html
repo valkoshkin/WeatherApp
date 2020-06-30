@@ -10,7 +10,6 @@
     </div>
   </div>
 
-  <!--  {{dateParse(currentWeatherData.location.localtime.split(' ')[0])}} <br>-->
   <div class="current-weather-icon">
     <img [src]=currentWeatherData.current.condition.icon>
   </div>
@@ -81,7 +80,7 @@
       <span class="forecast-temp-min">
         / {{forecast.day.mintemp_c}}°
       </span>
-<!--      {{forecast.day.mintemp_c}}° / {{forecast.day.maxtemp_c}}°-->
+      <!--      {{forecast.day.mintemp_c}}° / {{forecast.day.maxtemp_c}}°-->
     </div>
 
     <div class="forecast-char" matTooltip="Wind speed" matTooltipPosition="left">
@@ -93,12 +92,9 @@
       <mat-icon [inline]="true">opacity</mat-icon>
       {{forecast.day.daily_chance_of_rain}}%
     </div>
-
-
-
-
-
   </div>
+  <div class="vl-one"></div>
+  <div class="vl-two"></div>
 </div>
 
 <div class="weather-by-day-box">

@@ -17,13 +17,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-size: 20px;
 }
 
-.search-box-table{
-  left: 10px;
-  bottom: 15px;
-  position: relative;
-  width: 95%;
-}
-
 .search-box-text{
   position: relative;
   width: 100%;
@@ -71,24 +64,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .w-icon{
-  display: inline;
+  position: absolute;
   bottom: 12px;
   width: 5%;
-  margin-left: 1.5%;
+  left: 10px
 }
 
 .w-input{
-  display: inline;
+  position: absolute;
   bottom: 12px;
   width: 80%;
-  margin: 0 1.5%;
+  left: 45px;
 }
 
 .w-button{
-  display: inline;
-  bottom: 12px;
+  position: absolute;
+  bottom: 13px;
   width: 10%;
-  text-align: center;
+  left: 58px;
 }
 
 .inline-box {
@@ -205,6 +198,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 body{
   background: url("https://images.wallpapersden.com/image/download/4k-natural-gradient_67713_3840x2160.jpg");
   background-size: 100%;
+}
+
+.vl-one{
+  position: absolute;
+  border-left: 1px solid #000000;
+  left: 33.3%;
+  top: 10px;
+  height: 215px;
+}
+
+.vl-two{
+  position: absolute;
+  border-left: 1px solid #000000;
+  left: 66.6%;
+  top: 10px;
+  height: 215px;
 }
 
 
