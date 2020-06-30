@@ -54,7 +54,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .weather-by-day-box{
   position: absolute;
   width: 80%;
-  height: 170px;
+  height: 300px;
   left: 10%;
   top: 420px;
 
@@ -85,10 +85,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .inline-box {
+   display: inline-block;
+   width: 125px;
+   height: 100px;
+   margin: 20px 40px;
+ }
+
+.inline-box-hour {
   display: inline-block;
-  width: 125px;
+  width: 80px;
   height: 100px;
-  margin: 20px 40px;
+  margin: 20px 10px;
+  text-align: center;
 }
 
 .current-weather-header{

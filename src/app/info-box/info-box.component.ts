@@ -13,6 +13,8 @@ export class InfoBoxComponent implements OnInit, OnChanges {
   public currentWeatherData: any;
   @Input()
   public forecastData: any;
+  @Input()
+  public historyData: any;
 
 
   constructor(public openWeatherService: OpenWeatherService) {

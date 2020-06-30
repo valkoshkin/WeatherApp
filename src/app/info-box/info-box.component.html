@@ -80,7 +80,6 @@
       <span class="forecast-temp-min">
         / {{forecast.day.mintemp_c}}°
       </span>
-      <!--      {{forecast.day.mintemp_c}}° / {{forecast.day.maxtemp_c}}°-->
     </div>
 
     <div class="forecast-char" matTooltip="Wind speed" matTooltipPosition="left">
@@ -98,6 +97,15 @@
 </div>
 
 <div class="weather-by-day-box">
+  <div *ngFor="let history of historyData.forecast.forecastday[0].hour" class="inline-box-hour">
+    {{history.time.split(' ')[1]}} <br>
+    <img [src]="history.condition.icon"> <br>
+    {{history.temp_c}} <br>
+  </div>
+
+<!--  {{historyData.forecast.forecastday[0].hour[0].feelslike_c}} <br>-->
+<!--  {{historyData.forecast.forecastday[0].hour[0].wind_kph}} <br>-->
+
 
 </div>
 
