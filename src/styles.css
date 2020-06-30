@@ -32,12 +32,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .info-box-primary{
   position: absolute;
   top: 140px;
-  width: 30%;
-  height: 320px;
+  width: 33%;
+  height: 230px;
   left: 5%;
 
-
-  background: #E1BEE7;
+  background: #F2F1F1;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
 }
@@ -45,7 +44,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .info-box-secondary{
   position: absolute;
   top: 140px;
-  width: 55%;
+  width: 45%;
   height: 320px;
   right: 5%;
 
@@ -97,6 +96,70 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 100px;
   margin: 1em;
 }
+
+.current-weather-header{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.current-weather-header-name{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.current-weather-header-location{
+  font-size: 16px;
+}
+
+.current-weather-temp{
+  position: absolute;
+  top: 85px;
+  left: 100px;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.current-weather-icon{
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.current-weather-feelslike{
+  position: absolute;
+  top: 95px;
+  left: 245px;
+  font-size: 16px;
+}
+
+.current-weather-description{
+  position: absolute;
+  top: 75px;
+  left: 245px;
+  font-size: 16px;
+}
+
+.current-weather-char-primary{
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+.current-weather-char{
+  display: inline-block;
+  margin-left: 20px;
+  font-size: 18px;
+}
+
+.current-weather-last-update{
+  position: absolute;
+  right: 40px;
+  top: 190px;
+  font-size: 18px;
+}
+
+
+
 
 
 

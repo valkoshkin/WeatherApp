@@ -14,6 +14,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {OpenWeatherService} from "../service/open-weather.service";
 import { InfoBoxComponent } from './info-box/info-box.component';
 import {CommonModule} from "@angular/common";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import {CommonModule} from "@angular/common";
     MatIconModule,
     MatButtonModule,
     RouterModule.forRoot(allAppRoutes),
-    HttpClientModule
+    HttpClientModule,
+    MatTooltipModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [OpenWeatherService],
   bootstrap: [AppComponent]

@@ -12,27 +12,28 @@ export class WeatherComponent implements OnInit {
   }
 
   public currentWeatherData: any;
-  public locationData: any;
   public forecastData: any;
 
   ngOnInit(): void {
   }
 
   onSubmit(city: string) {
-    this.openWeatherService.getLocationKey(city).subscribe( data =>{
-      this.locationData = data[0];
-      this.openWeatherService.getWeather(data[0].Key).subscribe( currentWeather =>{
-        this.currentWeatherData = currentWeather;
-      });
-      this.openWeatherService.getForecast(data[0].Key).subscribe( forecast => {
-        console.log(forecast);
-        this.forecastData = forecast;
-      });
+    this.openWeatherService.getWeather(city).subscribe( data => {
+      this.currentWeatherData = data;
     })
-    // this.openWeatherService.getWeather(city).subscribe(data => {
-    //   this.weatherData = data;
-    // });
-    // console.log(this.weatherData);
+    this.openWeatherService.getForecast(city).subscribe( data => {
+      this.forecastData = data;
+    })
+    // this.openWeatherService.getLocationKey(city).subscribe( data =>{
+    //   this.locationData = data[0];
+    //   this.openWeatherService.getWeather(data[0].Key).subscribe( currentWeather =>{
+    //     this.currentWeatherData = currentWeather;
+    //   });
+    //   this.openWeatherService.getForecast(data[0].Key).subscribe( forecast => {
+    //     console.log(forecast);
+    //     this.forecastData = forecast;
+    //   });
+    // })
   }
 
 }

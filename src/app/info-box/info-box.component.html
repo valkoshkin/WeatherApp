@@ -1,22 +1,74 @@
 <div class="info-box-primary">
-  <img [src]=weatherIcon> <br>
-  <h1>{{currentWeatherData[0].Temperature.Metric.Value}} ℃</h1>
-  <h1>{{currentWeatherData[0].WeatherText}}</h1>
-  {{locationData.LocalizedName}} <br>
-  {{locationData.Country.LocalizedName}} <br>
-  {{locationData.GeoPosition.Latitude}}, {{locationData.GeoPosition.Longitude}} <br>
-  <!--  Ощущается как: {{weatherData.RealFeelTemperature}} ℃ <br>-->
-  <!--  Скорость ветра: {{weatherData.wind.speed}} м/с <br>-->
-  <!--  Давление: {{weatherData.main.pressure * 0.75}} мм. рт. ст. <br>-->
-  <!--  Влажность: {{weatherData.main.humidity}}% <br>-->
+  <div class="current-weather-header">
+
+    <div class="current-weather-header-name">
+      <mat-icon [inline]="true">location_on</mat-icon>
+      {{currentWeatherData.location.name}}, {{currentWeatherData.location.country}}
+    </div>
+    <div class="current-weather-header-location">
+      {{currentWeatherData.location.lat}}, {{currentWeatherData.location.lon}}
+    </div>
+  </div>
+
+  <!--  {{dateParse(currentWeatherData.location.localtime.split(' ')[0])}} <br>-->
+  <div class="current-weather-icon">
+    <img [src]=currentWeatherData.current.condition.icon>
+  </div>
+
+  <div class="current-weather-temp">
+    {{currentWeatherData.current.temp_c}} °C
+  </div>
+
+
+  <div class="current-weather-description">
+    {{currentWeatherData.current.condition.text}}
+  </div>
+
+  <div class="current-weather-feelslike">
+    Feels like {{currentWeatherData.current.feelslike_c}} °C
+  </div>
+
+  <div class="current-weather-char-primary" matTooltip="Wind speed">
+    <mat-icon [inline]="true"> clear_all</mat-icon>
+    {{currentWeatherData.current.wind_kph}} kph
+  </div>
+
+  <div class="current-weather-char" matTooltip="Humidity">
+    <mat-icon [inline]="true">invert_colors</mat-icon>
+    {{currentWeatherData.current.humidity}}%
+  </div>
+
+  <div class="current-weather-char" matTooltip="Pressure">
+    <mat-icon [inline]="true">explore</mat-icon>
+    {{currentWeatherData.current.pressure_mb * 0.75}} mmHg
+  </div>
+
+  <div class="current-weather-char" matTooltip="Cloud cover">
+    <mat-icon [inline]="true">cloud</mat-icon>
+    {{currentWeatherData.current.cloud}}%
+  </div>
+
+  <div class="current-weather-char" matTooltip="UV index">
+    <mat-icon [inline]="true">wb_sunny</mat-icon>
+    {{currentWeatherData.current.uv}}
+  </div>
+
+  <div class="current-weather-last-update" matTooltip="Last update">
+    <mat-icon [inline]="true">update</mat-icon>
+    {{dateParse(currentWeatherData.current.last_updated.split(' ')[0])}}
+    {{currentWeatherData.current.last_updated.split(' ')[1]}}<br>
+  </div>
+
 </div>
 
 <div class="info-box-secondary">
-  <div *ngFor="let forecast of forecastData.DailyForecasts" class="inline-box">
-    {{forecast.Date.split('T')[0]}} <br>
-    <img [src]=openWeatherService.makeSafeImageUrl(forecast.Day.Icon)> <br>
-    {{forecast.Day.IconPhrase}} <br>
-    {{forecast.Temperature.Minimum.Value}}℃ - {{forecast.Temperature.Maximum.Value}}℃ <br><br>
+  <div *ngFor="let forecast of forecastData.forecast.forecastday" class="inline-box">
+    {{dateParse(forecast.date)}} <br>
+    <img [src]=forecast.day.condition.icon> <br>
+    {{forecast.day.avgtemp_c}} <br>
+    {{forecast.day.mintemp_c}}℃ - {{forecast.day.maxtemp_c}}℃ <br>
+    {{forecast.day.maxwind_kph}} км/ч <br>
+    УФ-индекс: {{forecast.day.uv}}
   </div>
 </div>
 
