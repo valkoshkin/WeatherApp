@@ -28,49 +28,14 @@ export class InfoBoxComponent implements OnInit, OnChanges {
     let dateMas = date.split('-');
     let day = dateMas[2];
     day = parseInt(day).toString();
-    let month: string;
-    switch (dateMas[1]) {
-      case '01':
-        month = 'January';
-        break;
-      case '02':
-        month = 'February';
-        break;
-      case '03':
-        month = 'March';
-        break;
-      case '04':
-        month = 'April';
-        break;
-      case '05':
-        month = 'May';
-        break;
-      case '06':
-        month = 'June';
-        break;
-      case '07':
-        month = 'July';
-        break;
-      case '08':
-        month = 'August';
-        break;
-      case '09':
-        month = 'September';
-        break;
-      case '10':
-        month = 'October';
-        break;
-      case '11':
-        month = 'November';
-        break;
-      case '12':
-        month = 'December';
-        break;
-      default:
-        month = 'problems';
-        break;
-    }
+    let months = ["January", "February", "March", "April",
+      "May", "June", "July", "August", "September", "October", "November", "December"];
+    let month = months[parseInt(dateMas[1]) - 1];
     return month + ' ' + day;
+  }
+
+  getDayOfWeekByDate(date: string){
+    return new Date(date).toLocaleDateString('en-us', {weekday: 'long'});
   }
 
 

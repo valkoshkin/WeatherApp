@@ -53,7 +53,7 @@
     {{currentWeatherData.current.uv}}
   </div>
 
-  <div class="current-weather-last-update" matTooltip="Last update">
+  <div class="current-weather-last-update" matTooltip="Last update" matTooltipPosition="left">
     <mat-icon [inline]="true">update</mat-icon>
     {{dateParse(currentWeatherData.current.last_updated.split(' ')[0])}}
     {{currentWeatherData.current.last_updated.split(' ')[1]}}<br>
@@ -63,12 +63,41 @@
 
 <div class="info-box-secondary">
   <div *ngFor="let forecast of forecastData.forecast.forecastday" class="inline-box">
-    {{dateParse(forecast.date)}} <br>
+
+    <div class="forecast-day">
+      {{getDayOfWeekByDate(forecast.date)}}
+    </div>
+
+    <div class="forecast-date">
+      {{dateParse(forecast.date)}}
+    </div>
+
     <img [src]=forecast.day.condition.icon> <br>
-    {{forecast.day.avgtemp_c}} <br>
-    {{forecast.day.mintemp_c}}℃ - {{forecast.day.maxtemp_c}}℃ <br>
-    {{forecast.day.maxwind_kph}} км/ч <br>
-    УФ-индекс: {{forecast.day.uv}}
+
+    <div class="forecast-temp">
+      <span class="forecast-temp-max">
+        {{forecast.day.maxtemp_c}}°
+      </span>
+      <span class="forecast-temp-min">
+        / {{forecast.day.mintemp_c}}°
+      </span>
+<!--      {{forecast.day.mintemp_c}}° / {{forecast.day.maxtemp_c}}°-->
+    </div>
+
+    <div class="forecast-char" matTooltip="Wind speed" matTooltipPosition="left">
+      <mat-icon [inline]="true"> clear_all</mat-icon>
+      {{forecast.day.maxwind_kph}} kph <br>
+    </div>
+
+    <div class="forecast-char" matTooltip="Chance of rain" matTooltipPosition="left">
+      <mat-icon [inline]="true">opacity</mat-icon>
+      {{forecast.day.daily_chance_of_rain}}%
+    </div>
+
+
+
+
+
   </div>
 </div>
 
