@@ -1,14 +1,31 @@
-<div class="search-box">
-  <mat-icon class="w-icon">search</mat-icon>
-  <mat-form-field class="example-full-width w-input">
-    <input matInput #city value="Samara">
-  </mat-form-field>
-  <button mat-raised-button color="primary" class="w-button" (click)="onSubmit(city.value)">
-    Search
-  </button>
-</div>
+<form (submit)="onSubmit(city.value)">
+  <div class="search-box">
+    <mat-icon class="w-icon">search</mat-icon>
+    <mat-form-field class="example-full-width w-input">
+      <input matInput #city value="Samara">
+    </mat-form-field>
+    <button mat-raised-button
+            color="primary"
+            class="w-button"
+            [disabled]="_loading"
+            (click)="onSubmit(city.value)">
+      Search
+    </button>
+  </div>
 
-<app-info-box *ngIf="currentWeatherData" [currentWeatherData]="currentWeatherData" [forecastData]="forecastData"
+  <div class="spinner">
+    <mat-progress-spinner
+      *ngIf="_loading"
+      diameter="150"
+      color="accent"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+</form>
+
+<app-info-box *ngIf="!_loading && currentWeatherData"
+              [currentWeatherData]="currentWeatherData"
+              [forecastData]="forecastData"
               [historyData]="historyData">
 </app-info-box>
 

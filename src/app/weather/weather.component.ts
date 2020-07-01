@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {OpenWeatherService} from "../../service/open-weather.service";
+import {finalize, switchMap, take, tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-weather',
@@ -11,6 +12,8 @@ export class WeatherComponent implements OnInit {
   constructor(public openWeatherService: OpenWeatherService) {
   }
 
+  public _loading: boolean = false;
+
   public currentWeatherData: any;
   public forecastData: any;
   public historyData: any;
@@ -19,18 +22,31 @@ export class WeatherComponent implements OnInit {
   }
 
   onSubmit(city: string) {
-    this.openWeatherService.getWeather(city).subscribe( data => {
-      this.currentWeatherData = data;
-      this.openWeatherService.getHistory(city, this.currentWeatherData.location.localtime.split(' ')[0])
-        .subscribe( history =>{
-          this.historyData = history;
-        });
-    });
-    this.openWeatherService.getForecast(city).subscribe( data => {
-      this.forecastData = data;
-    })
-
-    // this.openWeatherService.getHistory(city, this.currentWeatherData.location.localtime.split(' ')[0]);
+    this._loading = true;
+    this.openWeatherService.getWeather(city)
+      .pipe(
+        take(1),
+        switchMap(currentWeather => {
+          this.currentWeatherData = currentWeather;
+          return this.openWeatherService.getHistory(city, this.currentWeatherData.location.localtime.split(' ')[0])
+            .pipe(
+              take(1),
+              tap(history => {
+                this.historyData = history;
+              }))
+        }),
+        finalize(() => {
+          this._loading = false;
+        })
+      )
+      .subscribe();
+    this.openWeatherService.getForecast(city)
+      .pipe(
+        take(1),
+        tap( forecast => {
+          this.forecastData = forecast;
+        })
+      )
+      .subscribe()
   }
-
 }

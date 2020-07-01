@@ -1,13 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
 
-.search-box{
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.search-box {
   position: absolute;
   width: 700px;
   height: 50px;
-  left: calc(50% - 700px/2 + 16px);
+  left: calc(50% - 700px / 2 + 16px);
   top: 40px;
 
   background: #F2F1F1;
@@ -17,12 +23,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-size: 20px;
 }
 
-.search-box-text{
+.search-box-text {
   position: relative;
   width: 100%;
 }
 
-.info-box-primary{
+.info-box-primary {
   position: absolute;
   top: 140px;
   width: 33%;
@@ -34,7 +40,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-radius: 15px;
 }
 
-.info-box-secondary{
+.info-box-secondary {
   position: absolute;
   top: 140px;
   width: 43%;
@@ -47,37 +53,39 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-radius: 15px;
 }
 
-.info-box{
-   width: 90%;
- }
+.info-box {
+  width: 90%;
+}
 
-.weather-by-day-box{
+.weather-by-day-box {
   position: absolute;
   width: 80%;
-  height: 300px;
+  height: 155px;
   left: 10%;
   top: 420px;
 
   background: #F2F1F1;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
+
+  text-align: center;
 }
 
-.w-icon{
+.w-icon {
   position: absolute;
   bottom: 12px;
   width: 5%;
   left: 10px
 }
 
-.w-input{
+.w-input {
   position: absolute;
   bottom: 12px;
   width: 80%;
   left: 45px;
 }
 
-.w-button{
+.w-button {
   position: absolute;
   bottom: 13px;
   width: 10%;
@@ -85,36 +93,43 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .inline-box {
-   display: inline-block;
-   width: 125px;
-   height: 100px;
-   margin: 20px 40px;
- }
+  display: inline-block;
+  width: 125px;
+  height: 100px;
+  margin: 20px 40px;
+}
 
 .inline-box-hour {
   display: inline-block;
   width: 80px;
   height: 100px;
-  margin: 20px 10px;
+  margin: 20px 6px;
   text-align: center;
 }
 
-.current-weather-header{
+.inline-box-hour-move {
+  display: inline-block;
+  bottom: 50px;
+  margin: 20px 5px;
+  text-align: center;
+}
+
+.current-weather-header {
   text-align: center;
   margin-top: 20px;
 }
 
-.current-weather-header-name{
+.current-weather-header-name {
   font-size: 24px;
   font-weight: bold;
 }
 
-.current-weather-header-location{
+.current-weather-header-location {
   font-size: 16px;
   margin-top: 5px;
 }
 
-.current-weather-temp{
+.current-weather-temp {
   position: absolute;
   top: 100px;
   left: 100px;
@@ -122,58 +137,65 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-weight: bold;
 }
 
-.current-weather-icon{
+.current-weather-icon {
   margin-top: 10px;
   margin-left: 20px;
 }
 
-.current-weather-feelslike{
+.current-weather-feelslike {
   position: absolute;
   top: 110px;
   left: 245px;
   font-size: 16px;
 }
 
-.current-weather-description{
+.current-weather-description {
   position: absolute;
   top: 92px;
   left: 245px;
   font-size: 16px;
 }
 
-.current-weather-char-primary{
+.current-weather-char-primary {
   display: inline-block;
   margin-left: 30px;
   margin-top: 10px;
   font-size: 18px;
 }
 
-.current-weather-char{
+.current-weather-char {
   display: inline-block;
   margin-left: 20px;
   font-size: 18px;
 }
 
-.current-weather-last-update{
+.current-weather-last-update {
   position: absolute;
   right: 40px;
   top: 195px;
   font-size: 18px;
 }
 
-.forecast-date{
+.current-weather-localtime {
+  position: absolute;
+  left: 30px;
+  top: 195px;
+  font-size: 18px;
+}
+
+.forecast-date {
   display: block;
   font-size: 18px;
   margin-top: 5px;
 }
 
-.forecast-day{
+.forecast-day {
   display: block;
   font-size: 24px;
   font-weight: bold;
 }
 
-.forecast-temp-avg{
+.forecast-temp-avg {
   display: block;
   font-size: 26px;
   font-weight: bold;
@@ -181,21 +203,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-bottom: 15px;
 }
 
-.forecast-temp{
+.forecast-temp {
   display: block;
   margin: 5px 0px;
 }
 
-.forecast-temp-max{
+.forecast-temp-max {
   font-size: 26px;
   font-weight: bold;
 }
 
-.forecast-temp-min{
+.forecast-temp-min {
   font-size: 18px;
 }
 
-.forecast-char{
+.forecast-char {
   display: block;
   font-size: 20px;
   margin-bottom: 5px;
@@ -203,12 +225,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   text-align: left;
 }
 
-body{
+body {
   background: url("https://images.wallpapersden.com/image/download/4k-natural-gradient_67713_3840x2160.jpg");
   background-size: 100%;
 }
 
-.vl-one{
+.vl-one {
   position: absolute;
   border-left: 1px solid #000000;
   left: 33.3%;
@@ -216,12 +238,36 @@ body{
   height: 215px;
 }
 
-.vl-two{
+.vl-two {
   position: absolute;
   border-left: 1px solid #000000;
   left: 66.6%;
   top: 10px;
   height: 215px;
+}
+
+.spinner {
+  position: absolute;
+  left: calc(50% - 150px / 2);
+  top: calc(50% - 150px / 2);
+}
+
+.button-move-right {
+  position: absolute;
+  top: 90%;
+  right: 10%;
+}
+
+.history-hour {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.history-temp {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 

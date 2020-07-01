@@ -3,10 +3,10 @@
 
     <div class="current-weather-header-name">
       <mat-icon [inline]="true">location_on</mat-icon>
-      {{currentWeatherData.location.name}}, {{currentWeatherData.location.country}}
+      {{currentWeatherData.location.name}}
     </div>
     <div class="current-weather-header-location">
-      {{currentWeatherData.location.lat}}, {{currentWeatherData.location.lon}}
+      {{currentWeatherData.location.region}}, {{currentWeatherData.location.country}}
     </div>
   </div>
 
@@ -27,7 +27,7 @@
     Feels like {{currentWeatherData.current.feelslike_c}} °C
   </div>
 
-  <div class="current-weather-char-primary" matTooltip="Wind speed">
+  <div class="current-weather-char-primary" matTooltip="Wind speed" matTooltipPosition="left">
     <mat-icon [inline]="true"> clear_all</mat-icon>
     {{currentWeatherData.current.wind_kph}} kph
   </div>
@@ -42,19 +42,23 @@
     {{currentWeatherData.current.pressure_mb * 0.75}} mmHg
   </div>
 
-  <div class="current-weather-char" matTooltip="Cloud cover">
+  <div class="current-weather-char" matTooltip="Cloud cover" matTooltipPosition="right">
     <mat-icon [inline]="true">cloud</mat-icon>
     {{currentWeatherData.current.cloud}}%
   </div>
 
-  <div class="current-weather-char" matTooltip="UV index">
+  <div class="current-weather-char" matTooltip="UV index" matTooltipPosition="right">
     <mat-icon [inline]="true">wb_sunny</mat-icon>
     {{currentWeatherData.current.uv}}
   </div>
 
+  <div class="current-weather-localtime" matTooltip="Local date" matTooltipPosition="left">
+    <mat-icon [inline]="true">calendar_today</mat-icon>
+    {{dateParse(currentWeatherData.location.localtime.split(' ')[0])}}
+  </div>
+
   <div class="current-weather-last-update" matTooltip="Last update" matTooltipPosition="left">
     <mat-icon [inline]="true">update</mat-icon>
-    {{dateParse(currentWeatherData.current.last_updated.split(' ')[0])}}
     {{currentWeatherData.current.last_updated.split(' ')[1]}}<br>
   </div>
 
@@ -97,16 +101,35 @@
 </div>
 
 <div class="weather-by-day-box">
-  <div *ngFor="let history of historyData.forecast.forecastday[0].hour" class="inline-box-hour">
-    {{history.time.split(' ')[1]}} <br>
+  <button mat-mini-fab
+          class="inline-box-hour-move"
+          color="primary"
+          [disabled]="_isLeftDisabled"
+          (click)="move(getHourForecastArray(historyData, _pos), 'left')">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+  </button>
+  <div *ngFor="let history of getHourForecastArray(historyData, _pos)" class="inline-box-hour">
+    <div class="history-hour">
+      {{history.time.split(' ')[1]}}
+    </div>
+
     <img [src]="history.condition.icon"> <br>
-    {{history.temp_c}} <br>
+
+    <div class="history-temp">
+      {{history.temp_c}}°
+    </div>
+
   </div>
-
-<!--  {{historyData.forecast.forecastday[0].hour[0].feelslike_c}} <br>-->
-<!--  {{historyData.forecast.forecastday[0].hour[0].wind_kph}} <br>-->
-
+  <button mat-mini-fab
+          class="inline-box-hour-move"
+          color="primary"
+          [disabled]="_isRightDisabled"
+          (click)="move(getHourForecastArray(historyData, _pos), 'right')">
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
 
 </div>
+
+
 
 

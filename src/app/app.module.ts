@@ -17,6 +17,8 @@ import {CommonModule} from "@angular/common";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatListModule} from "@angular/material/list";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -24,20 +26,22 @@ import {MatListModule} from "@angular/material/list";
     WeatherComponent,
     InfoBoxComponent
   ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    RouterModule.forRoot(allAppRoutes),
-    HttpClientModule,
-    MatTooltipModule,
-    MatDividerModule,
-    MatListModule
-  ],
+    imports: [
+        BrowserModule,
+        CommonModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        RouterModule.forRoot(allAppRoutes),
+        HttpClientModule,
+        MatTooltipModule,
+        MatDividerModule,
+        MatListModule,
+        MatProgressSpinnerModule,
+        MatTabsModule
+    ],
   providers: [OpenWeatherService],
   bootstrap: [AppComponent]
 })
