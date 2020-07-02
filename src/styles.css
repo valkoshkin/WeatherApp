@@ -9,11 +9,21 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+body {
+  background: url("https://i.pinimg.com/originals/bb/c1/7a/bbc17a7360f0268dbddd6347c9e11bfb.jpg");
+  background-size: 100%;
+}
+
+.flex-center{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .search-box {
   position: absolute;
   width: 700px;
   height: 50px;
-  left: calc(50% - 700px / 2 + 16px);
   top: 40px;
 
   background: #F2F1F1;
@@ -23,31 +33,11 @@ body {
   font-size: 20px;
 }
 
-.search-box-button{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: absolute;
-  width: 70px;
-  height: 50px;
-  right: 0;
-  top: 0;
-
-  background: #673AB7;
-  border-radius: 0 13px 13px 0;
-
-  font-size: 20px;
-}
-
-.search-box-text {
-  position: relative;
-  width: 100%;
-}
-
 .info-box-primary {
   position: absolute;
   top: 140px;
   width: 33%;
+  min-width: 400px;
   height: 235px;
   left: 10%;
 
@@ -62,6 +52,8 @@ body {
   position: absolute;
   top: 140px;
   width: 43%;
+  min-width: 610px;
+  max-width: 43%;
   height: 235px;
   right: 10%;
   text-align: center;
@@ -71,13 +63,15 @@ body {
   border-radius: 15px;
 }
 
-.info-box {
-  width: 90%;
+.info-boxes {
+  display: flex;
+  justify-content: space-between;
 }
 
 .weather-by-day-box {
   position: absolute;
   width: 80%;
+  min-width: 1000px;
   height: 155px;
   left: 10%;
   top: 420px;
@@ -87,32 +81,25 @@ body {
   border-radius: 15px;
 }
 
-.flex-box{
+.flex-box {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.flex-space-between{
+.flex-space-between {
   display: flex;
   justify-content: space-between;
 }
 
-.w-icon {
-  position: absolute;
-  bottom: 12px;
-  width: 5%;
-  left: 10px
-}
-
-.w-input {
+.search-box-input {
   position: absolute;
   bottom: 12px;
   width: 90%;
   margin-left: 20px;
 }
 
-.w-button {
+.search-box-button {
   position: absolute;
   border-radius: 0 13px 13px 0;
   bottom: 13px;
@@ -233,14 +220,6 @@ body {
   font-weight: bold;
 }
 
-.forecast-temp-avg {
-  display: block;
-  font-size: 26px;
-  font-weight: bold;
-  margin-top: 5px;
-  margin-bottom: 15px;
-}
-
 .forecast-temp {
   display: block;
   margin: 5px 0px;
@@ -261,11 +240,6 @@ body {
   margin-bottom: 5px;
   margin-left: 9px;
   text-align: left;
-}
-
-body {
-  background: url("https://images.wallpapersden.com/image/download/4k-natural-gradient_67713_3840x2160.jpg");
-  background-size: 100%;
 }
 
 .vl-one {
@@ -290,11 +264,6 @@ body {
   top: calc(50% - 150px / 2);
 }
 
-.button-move-right {
-  position: absolute;
-  top: 90%;
-}
-
 .history-hour {
   display: block;
   font-size: 16px;
@@ -303,8 +272,12 @@ body {
 .history-temp {
   display: block;
   font-size: 18px;
-  font-weight: bold;
 }
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #F2F1F1 !important;
+}
+
 
 
 

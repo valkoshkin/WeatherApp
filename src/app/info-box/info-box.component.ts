@@ -1,5 +1,4 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {OpenWeatherService} from "../../service/open-weather.service";
 
 @Component({
   selector: 'app-info-box',
@@ -7,7 +6,7 @@ import {OpenWeatherService} from "../../service/open-weather.service";
   styleUrls: ['./info-box.component.css']
 })
 
-export class InfoBoxComponent implements OnInit, OnChanges {
+export class InfoBoxComponent implements OnInit{
 
   @Input()
   public currentWeatherData: any;
@@ -21,21 +20,18 @@ export class InfoBoxComponent implements OnInit, OnChanges {
   public _isLeftDisabled: boolean = true;
 
 
-  constructor(public openWeatherService: OpenWeatherService) {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
+  constructor() {
   }
 
   ngOnInit(): void {
   }
 
-  dateParse(date: string) {
+  parseDate(date: string) {
     let dateMas = date.split('-');
     let day = dateMas[2];
     day = parseInt(day).toString();
-    let months = ["January", "February", "March", "April",
-      "May", "June", "July", "August", "September", "October", "November", "December"];
+    let months = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
     let month = months[parseInt(dateMas[1]) - 1];
     return month + ' ' + day;
   }
@@ -51,34 +47,31 @@ export class InfoBoxComponent implements OnInit, OnChanges {
     return day;
   }
 
-  getHourForecastArray(data: any, pos: number) {
-    console.log(data);
+  getHourlyForecastArray(data: any, pos: number) {
     let arrayToShow = [];
     for (let i = 0; i < 12; i++) {
-      console.log(data.forecast.forecastday[0].hour[pos + i]);
       arrayToShow[i] = data.forecast.forecastday[0].hour[pos + i];
     }
-    console.log(arrayToShow);
     return arrayToShow;
   }
 
-  move(array, dir: string) {
+  move(hourlyForecast, direction: string) {
     this._isRightDisabled = false;
     this._isLeftDisabled = false;
-    switch (dir) {
+    switch (direction) {
       case "right":
-        if (array[11].time.split(' ')[1] != '23:00'){
+        if (hourlyForecast[11].time.split(' ')[1] != '23:00'){
           this._pos += 6;
         }
-        if (array[11].time.split(' ')[1] == '17:00'){
+        if (hourlyForecast[11].time.split(' ')[1] == '17:00'){
           this._isRightDisabled = true;
         }
         break;
       case "left":
-        if (array[0].time.split(' ')[1] != '00:00'){
+        if (hourlyForecast[0].time.split(' ')[1] != '00:00'){
           this._pos -= 6;
         }
-        if (array[0].time.split(' ')[1] == '06:00'){
+        if (hourlyForecast[0].time.split(' ')[1] == '06:00'){
           this._isLeftDisabled = true;
         }
         break;

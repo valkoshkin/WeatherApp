@@ -9,21 +9,20 @@ import {finalize, switchMap, take, tap} from "rxjs/operators";
 })
 export class WeatherComponent implements OnInit {
 
-  constructor(public openWeatherService: OpenWeatherService) {
-  }
-
   public _loading: boolean = false;
-
   public currentWeatherData: any;
   public forecastData: any;
   public historyData: any;
+
+  constructor(public openWeatherService: OpenWeatherService) {
+  }
 
   ngOnInit(): void {
   }
 
   onSubmit(city: string) {
     this._loading = true;
-    this.openWeatherService.getWeather(city)
+    this.openWeatherService.getCurrentWeather(city)
       .pipe(
         take(1),
         switchMap(currentWeather => {
