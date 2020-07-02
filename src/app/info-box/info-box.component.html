@@ -27,106 +27,120 @@
     Feels like {{currentWeatherData.current.feelslike_c}} °C
   </div>
 
-  <div class="current-weather-char-primary" matTooltip="Wind speed" matTooltipPosition="left">
-    <mat-icon [inline]="true"> clear_all</mat-icon>
-    {{currentWeatherData.current.wind_kph}} kph
+  <div class="flex-space-between">
+    <div class="current-weather-char-primary" matTooltip="Wind speed" matTooltipPosition="left">
+      <mat-icon [inline]="true"> clear_all</mat-icon>
+      {{currentWeatherData.current.wind_kph}} kph
+    </div>
+
+    <div class="current-weather-char" matTooltip="Humidity">
+      <mat-icon [inline]="true">invert_colors</mat-icon>
+      {{currentWeatherData.current.humidity}}%
+    </div>
+
+    <div class="current-weather-char" matTooltip="Pressure">
+      <mat-icon [inline]="true">explore</mat-icon>
+      {{currentWeatherData.current.pressure_mb * 0.75}} mmHg
+    </div>
+
+    <div class="current-weather-char-last" matTooltip="Cloud cover" matTooltipPosition="right">
+      <mat-icon [inline]="true">cloud</mat-icon>
+      {{currentWeatherData.current.cloud}}%
+    </div>
   </div>
 
-  <div class="current-weather-char" matTooltip="Humidity">
-    <mat-icon [inline]="true">invert_colors</mat-icon>
-    {{currentWeatherData.current.humidity}}%
+
+  <div class="flex-space-between">
+    <div class="current-weather-localtime" matTooltip="Local date" matTooltipPosition="left">
+      <mat-icon [inline]="true">calendar_today</mat-icon>
+      {{dateParse(currentWeatherData.location.localtime.split(' ')[0])}}
+    </div>
+
+    <div class="current-weather-last-update" matTooltip="Last update" matTooltipPosition="left">
+      <mat-icon [inline]="true">update</mat-icon>
+      {{currentWeatherData.current.last_updated.split(' ')[1]}}<br>
+    </div>
   </div>
 
-  <div class="current-weather-char" matTooltip="Pressure">
-    <mat-icon [inline]="true">explore</mat-icon>
-    {{currentWeatherData.current.pressure_mb * 0.75}} mmHg
-  </div>
 
-  <div class="current-weather-char" matTooltip="Cloud cover" matTooltipPosition="right">
-    <mat-icon [inline]="true">cloud</mat-icon>
-    {{currentWeatherData.current.cloud}}%
-  </div>
-
-  <div class="current-weather-char" matTooltip="UV index" matTooltipPosition="right">
-    <mat-icon [inline]="true">wb_sunny</mat-icon>
-    {{currentWeatherData.current.uv}}
-  </div>
-
-  <div class="current-weather-localtime" matTooltip="Local date" matTooltipPosition="left">
-    <mat-icon [inline]="true">calendar_today</mat-icon>
-    {{dateParse(currentWeatherData.location.localtime.split(' ')[0])}}
-  </div>
-
-  <div class="current-weather-last-update" matTooltip="Last update" matTooltipPosition="left">
-    <mat-icon [inline]="true">update</mat-icon>
-    {{currentWeatherData.current.last_updated.split(' ')[1]}}<br>
-  </div>
 
 </div>
 
 <div class="info-box-secondary">
   <div *ngFor="let forecast of forecastData.forecast.forecastday" class="inline-box">
 
-    <div class="forecast-day">
-      {{getDayOfWeekByDate(forecast.date)}}
-    </div>
+    <div>
+      <div class="forecast-day">
+        {{getDayOfWeekByDate(forecast.date)}}
+      </div>
 
-    <div class="forecast-date">
-      {{dateParse(forecast.date)}}
-    </div>
+      <div class="forecast-date">
+        {{dateParse(forecast.date)}}
+      </div>
 
-    <img [src]=forecast.day.condition.icon> <br>
+      <img [src]=forecast.day.condition.icon> <br>
 
-    <div class="forecast-temp">
+      <div class="forecast-temp">
       <span class="forecast-temp-max">
         {{forecast.day.maxtemp_c}}°
       </span>
-      <span class="forecast-temp-min">
+        <span class="forecast-temp-min">
         / {{forecast.day.mintemp_c}}°
       </span>
+      </div>
+
+      <div class="forecast-char" matTooltip="Wind speed" matTooltipPosition="left">
+        <mat-icon [inline]="true"> clear_all</mat-icon>
+        {{forecast.day.maxwind_kph}} kph <br>
+      </div>
+
+      <div class="forecast-char" matTooltip="Chance of rain" matTooltipPosition="left">
+        <mat-icon [inline]="true">opacity</mat-icon>
+        {{forecast.day.daily_chance_of_rain}}%
+      </div>
     </div>
 
-    <div class="forecast-char" matTooltip="Wind speed" matTooltipPosition="left">
-      <mat-icon [inline]="true"> clear_all</mat-icon>
-      {{forecast.day.maxwind_kph}} kph <br>
-    </div>
-
-    <div class="forecast-char" matTooltip="Chance of rain" matTooltipPosition="left">
-      <mat-icon [inline]="true">opacity</mat-icon>
-      {{forecast.day.daily_chance_of_rain}}%
-    </div>
   </div>
   <div class="vl-one"></div>
   <div class="vl-two"></div>
 </div>
 
 <div class="weather-by-day-box">
-  <button mat-mini-fab
-          class="inline-box-hour-move"
-          color="primary"
-          [disabled]="_isLeftDisabled"
-          (click)="move(getHourForecastArray(historyData, _pos), 'left')">
-    <mat-icon>keyboard_arrow_left</mat-icon>
-  </button>
-  <div *ngFor="let history of getHourForecastArray(historyData, _pos)" class="inline-box-hour">
-    <div class="history-hour">
-      {{history.time.split(' ')[1]}}
+  <div class="flex-box">
+    <div class="inline-box-hour-move-left">
+      <button mat-mini-fab
+
+              color="primary"
+              [disabled]="_isLeftDisabled"
+              (click)="move(getHourForecastArray(historyData, _pos), 'left')">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
     </div>
 
-    <img [src]="history.condition.icon"> <br>
+    <div *ngFor="let history of getHourForecastArray(historyData, _pos)" class="inline-box-hour">
+      <div class="history-hour">
+        {{history.time.split(' ')[1]}}
+      </div>
 
-    <div class="history-temp">
-      {{history.temp_c}}°
+      <img [src]="history.condition.icon"> <br>
+
+      <div class="history-temp">
+        {{history.temp_c}}°
+      </div>
+
+    </div>
+    <div class="inline-box-hour-move-right">
+      <button mat-mini-fab
+
+              color="primary"
+              [disabled]="_isRightDisabled"
+              (click)="move(getHourForecastArray(historyData, _pos), 'right')">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
     </div>
 
   </div>
-  <button mat-mini-fab
-          class="inline-box-hour-move"
-          color="primary"
-          [disabled]="_isRightDisabled"
-          (click)="move(getHourForecastArray(historyData, _pos), 'right')">
-    <mat-icon>keyboard_arrow_right</mat-icon>
-  </button>
+
 
 </div>
 

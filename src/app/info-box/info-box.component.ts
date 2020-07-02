@@ -41,7 +41,14 @@ export class InfoBoxComponent implements OnInit, OnChanges {
   }
 
   getDayOfWeekByDate(date: string) {
-    return new Date(date).toLocaleDateString('en-us', {weekday: 'long'});
+    let day: string;
+    if (date == this.forecastData.location.localtime.split(' ')[0]){
+      day = 'Today';
+    }
+    else{
+      day = new Date(date).toLocaleDateString('en-us', {weekday: 'long'});
+    }
+    return day;
   }
 
   getHourForecastArray(data: any, pos: number) {
