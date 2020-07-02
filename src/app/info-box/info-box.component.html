@@ -108,8 +108,7 @@
 <div class="weather-by-day-box">
   <div class="flex-box">
     <div class="inline-box-hour-move-left">
-      <button mat-mini-fab
-
+      <button mat-icon-button
               color="primary"
               [disabled]="_isLeftDisabled"
               (click)="move(getHourForecastArray(historyData, _pos), 'left')">
@@ -130,8 +129,7 @@
 
     </div>
     <div class="inline-box-hour-move-right">
-      <button mat-mini-fab
-
+      <button mat-icon-button
               color="primary"
               [disabled]="_isRightDisabled"
               (click)="move(getHourForecastArray(historyData, _pos), 'right')">
