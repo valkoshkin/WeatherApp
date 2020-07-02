@@ -8,8 +8,6 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {WeatherComponent} from './weather/weather.component';
-import {RouterModule} from '@angular/router';
-import {allAppRoutes} from './routes';
 import {HttpClientModule} from "@angular/common/http";
 import {OpenWeatherService} from "../service/open-weather.service";
 import { InfoBoxComponent } from './info-box/info-box.component';
@@ -34,7 +32,6 @@ import {MatTabsModule} from "@angular/material/tabs";
         MatInputModule,
         MatIconModule,
         MatButtonModule,
-        RouterModule.forRoot(allAppRoutes),
         HttpClientModule,
         MatTooltipModule,
         MatDividerModule,
